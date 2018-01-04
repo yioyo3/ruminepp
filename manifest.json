@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "RuMine++",
+    "version": "0.0.0",
+    "description": "Make RuMine great again!",
+    "icons": {"128": "icon.png"},
+    "content_scripts": [
+        {
+            "matches": ["http://ru-minecraft.ru/*", "https://ru-minecraft.ru/*"],
+            "js": ["inject.js"],
+            "all_frames": true
+        }
+    ],
+    "web_accessible_resources": [
+        "build/content.js"
+    ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "ruminepp",
+  "version": "0.1.0",
+  "description": "RuMine chrome extension...",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yioyo3/ruminepp.git"
+  },
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/yioyo3/ruminepp/issues"
+  },
+  "homepage": "https://github.com/yioyo3/ruminepp#readme",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-zip": "^4.1.0"
+  }
+}
