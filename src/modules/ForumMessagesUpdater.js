@@ -20,6 +20,13 @@
 				actual.messages.slice(current.length).forEach(PageAPI.appendForumMessage);
 			}
 
+			current.forEach(function(c, i) {
+				console.log($(".EditMsgView", $(c)).html() !== $(".EditMsgView", $(actual.messages[i])).html());
+				if ($(".EditMsgView", $(c)).html() !== $(".EditMsgView", $(actual.messages[i])).html()) {
+					$("#" + c.getAttribute("id")).html(actual.messages[i].innerHTML);
+				}
+			});
+
 			if (currentPage !== null && currentPage !== actual.page) {
 				currentPage = actual.page;
 
