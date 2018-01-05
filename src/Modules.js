@@ -4,9 +4,11 @@ const Modules = {
 		Modules._modules.push({ name: name, fn: fn });
 	},
 	load: function() {
+		if (typeof uCookies === "undefined") return;
+
 		try {
 			Notification.requestPermission();
-			
+
 			Modules._modules.forEach(function(m) {
 				console.log(m.name + " enabled? " + (uCookies.getCookie(m.name + "_enabled") !== "0"));
 				if (uCookies.getCookie(m.name + "_enabled") !== "0") m.fn();
