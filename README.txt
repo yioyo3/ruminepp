@@ -1,8 +1,8 @@
 Overall
 =============================
 
-Current state: Very early dev
-Version: 0.1.0
+Current state: early dev
+Version: 1.0.0
 
 Building
 =============================
