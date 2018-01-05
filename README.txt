@@ -2,7 +2,7 @@ Overall
 =============================
 
 Current state: stable
-Version: 1.1.1-stable
+Version: 1.1.2-stable
 
 Building
 =============================
