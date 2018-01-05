@@ -37,7 +37,7 @@ Modules.registerModule("ForumMessagesUpdater", function() {
 			current.forEach(function(c, i) {
 				if (c.getAttribute("id").endsWith(editing)) return;
 
-				if ($(".EditMsgView", $(c)).html() !== $(".EditMsgView", $(actual.messages[i])).html()) {
+				if ($(".EditMsgView", $(c)).text() !== $(".EditMsgView", $(actual.messages[i])).text()) {
 					$("#" + c.getAttribute("id")).html(actual.messages[i].innerHTML);
 				}
 			});
