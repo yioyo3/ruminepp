@@ -27,10 +27,12 @@ Modules.registerModule("ForumMessagesUpdater", function() {
 
 					const info = PageAPI.getMessageInfo(msg);
 
-					new Notification(info.username, {
+					let notification = new Notification(info.username, {
 						body: info.text,
 						icon: info.avatar
 					});
+
+					setTimeout(() => notification.close(), 3000);
 				});
 			}
 
