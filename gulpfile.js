@@ -19,7 +19,7 @@ gulp.task("html", function() {
 });
 
 gulp.task("zip", function() {
-	return gulp.src([BUILD + "content.js", "icon.png", "inject.js", "manifest.json"], { base: "." })
+	return gulp.src([BUILD + "content.js", "icon.png", "inject.js", "manifest.json", BUILD + "html/*.html"], { base: "." })
 		.pipe(zip("RuMinePP v" + VERSION + ".zip"))
 		.pipe(gulp.dest("./"));
 });
