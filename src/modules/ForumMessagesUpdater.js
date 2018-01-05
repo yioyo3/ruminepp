@@ -1,4 +1,4 @@
-(function() {
+Modules.registerModule("ForumMessagesUpdater", function() {
 	let currentPage = null;
 	let editing = null;
 
@@ -93,4 +93,4 @@
 	        $("#text_msg").val("");
 	    }, "json");
 	}
-})();
+});

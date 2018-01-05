@@ -4,7 +4,7 @@ function injectScript(content, tag) {
     var node = document.getElementsByTagName(tag)[0];
     var script = document.createElement("script");
     script.setAttribute("type", "text/javascript");
-    script.innerHTML = content;
+    script.innerHTML = content + "\nModules.load();";
     node.appendChild(script);
 }
 
