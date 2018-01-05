@@ -1,5 +1,76 @@
-<input class="rmppSetting" type="checkbox" id="RuMinePP"> Включить RuMine++ (не убирать) <br>
-<input class="rmppSetting" type="checkbox" id="ForumMessagesUpdater"> Автообновление сообщений на форуме <br>
-<input class="rmppSetting" type="checkbox" id="CustomEmoticons"> Кастомные эмотиконы <br>
-<textarea id="CustomEmoticons_urls" style="max-height: 100px; width: 510px;" placeholder="Ссылки на картинки для эмотиконов (с новой строки)"></textarea> <br>
-<input class="rmppSetting" type="checkbox" id="ReleaseChecker"> Проверять наличие новых релизов <br>
+<style>
+    .ruminepp_logo {
+        width: 30%;
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        top: 5px;
+        opacity: 0.5;
+    }
+    #checkboxes {
+        width: 100%;
+        padding: 0 30px;
+    }
+    hr {
+        border: 2px dashed #82c3f3;
+    }
+    input {
+        opacity: 0;
+        z-index: -999;
+    }
+    label {
+    position: relative;
+    display: block;
+    text-align: left;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 0 30px;
+    width: 300px;
+    float: left;
+    }
+    .true_checkbox {
+	width: 15px;
+    height: 15px;
+    position: relative;
+    border: 3px solid #71a9d2;
+    margin: -21px 0px;
+    overflow: hidden;
+    cursor: pointer;
+}
+    .fill {
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: transparent;
+    margin: 15px 0 0 -30px;
+    transform: rotate(45deg);
+    transition: margin ease .5s, background ease .5s;
+}
+    input:not(checked) + .true_checkbox > .fill {
+            background: transparent;
+            margin: 15px 0 0 -30px;
+    }
+    
+    input:checked + .true_checkbox > .fill {
+        margin: -7px;
+        background: #9bd4ff;
+    }
+    
+    #CustomEmoticons_urls {
+        outline: none;
+	    -moz-appearance: none;
+    }
+</style>
+
+<img src="https://i.imgur.com/F9dywXu.png" class="ruminepp_logo">
+<span style="font-family: 'Segoe UI', 'Arial', sans-serif; font-size: 14px; user-select: none;"><div id="checkboxes"><br><input class="rmppSetting" type="checkbox" id="RuMinePP"><div class="true_checkbox"><span class="fill"></span></div><label for="RuMinePP">Включить RuMine++ (не убирать)</label>
+<br><br>
+<input class="rmppSetting" type="checkbox" id="ForumMessagesUpdater"><div class="true_checkbox"><span class="fill"></span></div><label for="ForumMessagesUpdater">Автообновление сообщений на форуме</label>
+<br><br>
+<input class="rmppSetting" type="checkbox" id="CustomEmoticons"><div class="true_checkbox"><span class="fill"></span></div><label for="CustomEmoticons">Кастомные эмотиконы</label>
+<br><br>
+<input class="rmppSetting" type="checkbox" id="ReleaseChecker"><div class="true_checkbox"><span class="fill"></span></div><label for="ReleaseChecker">Проверять наличие новых релизов</label>
+<br><br></div>
+<hr><br>
+<textarea id="CustomEmoticons_urls" style="max-height: 100px; width: 510px;" placeholder="Ссылки на картинки для эмотиконов (с новой строки)"></textarea></span>
