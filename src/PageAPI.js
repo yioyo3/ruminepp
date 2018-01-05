@@ -3,18 +3,16 @@ const PageAPI = {
 		return Array.from($("li.msg", content ? $(content) : undefined)).slice(0, -1);
 	},
 	getForumPage: function(content) {
-		return ~~$(".txt_info_pages", content ? $(content) : undefined)[1].innerHTML.split(" ").pop();
+		try {
+			return ~~$(".txt_info_pages", content ? $(content) : undefined)[1].innerHTML.split(" ").pop();
+		} catch(e) {
+			return 1;
+		}
 	},
 	appendForumMessage: function(el) {
 		$(".contentBoxTopicMessageList")[0].insertBefore(el, document.getElementById("addNewMsg"));
 	},
 	isForumTopic: function() {
-		try {
-			PageAPI.getForumPage();
-		} catch(e) {
-			return false;
-		}
-
 		return window.location.href.startsWith("https://ru-minecraft.ru/forum/showtopic-");
 	},
 	getMessageInfo: function(msg) {
