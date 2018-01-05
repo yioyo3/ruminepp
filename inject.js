@@ -34,4 +34,6 @@ HTMLPages.forEach(function(p) {
     });
 });
 
+r += "RMPPVersion='" + chrome.runtime.getManifest().version + "';";
+
 injectScript("Modules.load();" + r, "body");
