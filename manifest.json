@@ -12,6 +12,7 @@
         }
     ],
     "web_accessible_resources": [
-        "build/content.js"
+        "build/content.js",
+        "build/html/settings.html"
     ]
 }

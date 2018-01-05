@@ -1,4 +1,6 @@
 Modules.registerModule("ForumMessagesUpdater", function() {
+	if (!PageAPI.isForumTopic()) return;
+
 	let currentPage = null;
 	let editing = null;
 

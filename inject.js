@@ -1,10 +1,10 @@
-let queue = [];
+const HTMLPages = ["settings.html"];
 
 function injectScript(content, tag) {
     var node = document.getElementsByTagName(tag)[0];
     var script = document.createElement("script");
     script.setAttribute("type", "text/javascript");
-    script.innerHTML = content + "\nModules.load();";
+    script.innerHTML = content;
     node.appendChild(script);
 }
 
@@ -26,3 +26,12 @@ function loadScript(path) {
 }
 
 loadScript("build/content.js");
+
+let r = "";
+HTMLPages.forEach(function(p) {
+    xhrGet(chrome.extension.getURL("build/html/" + HTMLPages), function(content) {
+        r += "HTML.register('" + p + "',\"" + encodeURIComponent(content) + "\");"; 
+    });
+});
+
+injectScript("Modules.load();" + r, "body");
