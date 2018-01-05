@@ -17,6 +17,11 @@ const PageAPI = {
 
 		return window.location.href.startsWith("https://ru-minecraft.ru/forum/showtopic-");
 	},
+	insertCustomEmoticon: function(url) {
+		doInsert("[img]" + url + "[/img]\n\n", "", false);
+		$("#bullet_energy_emos").dialog("close");
+		window.ie_range_cache = null;
+	},
 	popup: function (title, body, buttons) {
 		$("#dlepopup").remove();
 		$("body").append("<div id='dlepopup' title='" + title + "' style='display:none'>" + body + "</div>");
