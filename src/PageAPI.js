@@ -17,6 +17,17 @@ const PageAPI = {
 
 		return window.location.href.startsWith("https://ru-minecraft.ru/forum/showtopic-");
 	},
+	getMessageInfo: function(msg) {
+		const username = $(".autorInfo > p > a", $(msg))[0].innerHTML;
+		const avatar = $(".avatar > a > img", $(msg))[0].src;
+		const text = $("div[id^='MsgTextBox-']", $(msg))[0].innerText;
+
+		return {
+			username: username,
+			avatar: avatar,
+			text: text
+		}
+	},
 	insertCustomEmoticon: function(url) {
 		doInsert("[img]" + url + "[/img]\n\n", "", false);
 		$("#bullet_energy_emos").dialog("close");

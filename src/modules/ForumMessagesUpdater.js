@@ -1,6 +1,8 @@
 Modules.registerModule("ForumMessagesUpdater", function() {
 	if (!PageAPI.isForumTopic()) return;
 
+	Notification.requestPermission();
+
 	let currentPage = null;
 	let editing = null;
 
@@ -20,7 +22,16 @@ Modules.registerModule("ForumMessagesUpdater", function() {
 
 		getNewMessages(function(actual) {
 			if (current.length !== actual.messages.length) {
-				actual.messages.slice(current.length).forEach(PageAPI.appendForumMessage);
+				actual.messages.slice(current.length).forEach(function(msg) {
+					PageAPI.appendForumMessage(msg);
+
+					const info = PageAPI.getMessageInfo(msg);
+
+					new Notification(info.username, {
+						body: info.text,
+						icon: info.avatar
+					});
+				});
 			}
 
 			current.forEach(function(c, i) {
@@ -38,6 +49,10 @@ Modules.registerModule("ForumMessagesUpdater", function() {
 					"Перейти": function() {
 						window.location.href = window.location.href.replace("page-" + (actual.page - 1), "page-" + actual.page);
 					}
+				});
+
+				new Notification("Новая страница!", {
+					body: "На форуме появилась новая страница"
 				});
 			}
 
