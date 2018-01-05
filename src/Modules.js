@@ -4,6 +4,8 @@ const Modules = {
 		Modules._modules.push({ name: name, fn: fn });
 	},
 	load: function() {
+		if (window.location.href.startsWith("https://ru-minecraft.ru/out?")) return;
+
 		try {
 			Notification.requestPermission();
 
