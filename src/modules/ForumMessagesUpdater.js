@@ -1,5 +1,6 @@
 (function() {
 	let currentPage = null;
+	let editing = null;
 
 	function getNewMessages(cb) {
 		$.ajax({
@@ -21,7 +22,8 @@
 			}
 
 			current.forEach(function(c, i) {
-				console.log($(".EditMsgView", $(c)).html() !== $(".EditMsgView", $(actual.messages[i])).html());
+				if (c.getAttribute("id").endsWith(editing)) return;
+
 				if ($(".EditMsgView", $(c)).html() !== $(".EditMsgView", $(actual.messages[i])).html()) {
 					$("#" + c.getAttribute("id")).html(actual.messages[i].innerHTML);
 				}
@@ -42,6 +44,11 @@
 	}
 
 	setInterval(() => tick(), 2000);
+
+	// Inject
+	window.MsgEdit = Injector.before(window.MsgEdit, (id) => editing = id);
+	window.MsgEditSave = Injector.before(window.MsgEditSave, () => editing = null);
+	window.MsgEditCancel = Injector.before(window.MsgEditCancel, () => editing = null);
 
 	// Redefine default functions
 	window.doAddMessage = function() {
