@@ -1,6 +1,8 @@
 Modules.registerModule("CustomEmoticons", function() {
 	if (!PageAPI.isForumTopic()) return;
 
+	if (!localStorage.getItem("emoticons_urls")) localStorage.setItem("emoticons_urls", "");
+
 	const emoticons = localStorage.getItem("emoticons_urls").split("\n");
 
 	window.ins_emo = Injector.after(window.ins_emo, function() {
