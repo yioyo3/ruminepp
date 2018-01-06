@@ -24,7 +24,7 @@
     text-align: left;
     cursor: pointer;
     font-weight: 500;
-    padding: 0 30px;
+    padding: 0 0 0 30px;
     width: 300px;
     float: left;
     }
@@ -57,20 +57,51 @@
         background: #9bd4ff;
     }
     
+    .more {
+        text-decoration: none;
+        color: #71a9d2;
+        font-size: 10px;
+        transition: color ease .2s, visibility 0.5s, opacity 0.5s ease;
+    }
+    
+    .more:hover {
+        text-decoration: none;
+        color: #71a9d2;
+    }
+    
+    #spoiler {
+        display: none;
+        font-family: 'Consolas','Droid Sans','Monaco','Lucida',sans-serif;
+    }
+    
+    #spoiler textarea {
+        border: 1px dashed #71a9d2;
+    }
+    
+    .CustomEmoticons {
+        width: 155px;
+    }
+    
     #CustomEmoticons_urls {
         outline: none;
-	    -moz-appearance: none;
     }
 </style>
 
 <img src="https://i.imgur.com/F9dywXu.png" class="ruminepp_logo">
 <span style="font-family: 'Segoe UI', 'Arial', sans-serif; font-size: 14px; user-select: none;"><div id="checkboxes"><br><input class="rmppSetting" type="checkbox" id="RuMinePP"><div class="true_checkbox"><span class="fill"></span></div><label for="RuMinePP">Включить RuMine++ (не убирать)</label>
 <br><br>
+<input class="rmppSetting" type="checkbox" id="ReleaseChecker"><div class="true_checkbox"><span class="fill"></span></div><label for="ReleaseChecker">Проверять наличие новых релизов</label>
+<br><br>
 <input class="rmppSetting" type="checkbox" id="ForumMessagesUpdater"><div class="true_checkbox"><span class="fill"></span></div><label for="ForumMessagesUpdater">Автообновление сообщений на форуме</label>
 <br><br>
-<input class="rmppSetting" type="checkbox" id="CustomEmoticons"><div class="true_checkbox"><span class="fill"></span></div><label for="CustomEmoticons">Кастомные эмотиконы</label>
-<br><br>
-<input class="rmppSetting" type="checkbox" id="ReleaseChecker"><div class="true_checkbox"><span class="fill"></span></div><label for="ReleaseChecker">Проверять наличие новых релизов</label>
-<br><br></div>
-<hr><br>
-<textarea id="CustomEmoticons_urls" style="max-height: 100px; width: 510px;" placeholder="Ссылки на картинки для эмотиконов (с новой строки)"></textarea></span>
+<input class="rmppSetting" type="checkbox" id="CustomEmoticons"><div class="true_checkbox"><span class="fill"></span></div><label for="CustomEmoticons" class="CustomEmoticons">Кастомные эмотиконы</label><a href="javascript:ShowOrHide('spoiler')" class="more">&#9660;</a><div id="spoiler"><br>
+<textarea id="CustomEmoticons_urls" style="height: 30px; width: 450px; resize: none" placeholder="Ссылки на картинки для эмотиконов (с новой строки)"></textarea></div></div><br></span>
+<script type="text/javascript">
+$('#CustomEmoticons').click(function() {
+    if( $(this).is(':checked')) {
+        $(".more").css({"opacity": "1", "visibility": "visible"});
+    } else {
+        $(".more").css({"opacity": "0", "visibility": "hidden"});
+    }
+}); 
+</script>
