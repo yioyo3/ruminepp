@@ -4,6 +4,7 @@ const Modules = {
 		Modules._modules.push({ name: name, fn: fn });
 	},
 	load: function() {
+		if (!$(".loginset")[1]) return;
 		if (window.location.href.startsWith("https://ru-minecraft.ru/out?")) return;
 
 		try {
