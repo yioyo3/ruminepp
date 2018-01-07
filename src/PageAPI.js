@@ -66,5 +66,31 @@ const PageAPI = {
 			dialogClass: "modalfixed",
 			buttons: buttons
 		});
+	},
+	openWithPost: function(url, data) {
+		$("#Form").remove();
+
+		let form = document.createElement("form");
+		let target = "w" + Math.random();
+
+		form.setAttribute("id", "Form");
+		form.setAttribute("method", "POST");
+		form.setAttribute("action", url);
+		form.setAttribute("target", target);
+
+		Object.keys(data).forEach(function(key) {
+			let input = document.createElement("input");
+
+			input.setAttribute("type", "hidden");
+			input.setAttribute("name", key);
+			input.setAttribute("value", data[key]);
+
+			form.appendChild(input);
+		});
+
+		document.body.appendChild(form);
+
+		window.open("", target, 'height=900,width=1250,resizable=0,scrollbars=1');
+		form.submit();
 	}
 };
