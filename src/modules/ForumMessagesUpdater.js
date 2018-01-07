@@ -40,6 +40,11 @@ Modules.registerModule("ForumMessagesUpdater", function() {
 				if (c.getAttribute("id").endsWith(editing)) return;
 
 				if ($(".EditMsgView", $(c)).text() !== $(".EditMsgView", $(actual.messages[i])).text()) {
+					if (window._pushHistory) {
+						window._pushHistory(actual.messages[i]);
+						PageAPI.appendHistoryBtn(actual.messages[i]);
+					}
+
 					$("#" + c.getAttribute("id")).html(actual.messages[i].innerHTML);
 				}
 			});
