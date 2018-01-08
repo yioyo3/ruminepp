@@ -39,7 +39,7 @@ Modules.registerModule("ForumMessageHistory", function() {
 
 			PageAPI.popup(
 				"История редактирования", 
-				"<div style='overflow-y: scroll; height:400px;'>" + history.join("<hr>") + "</div>",
+				history.join("<hr>"),
 				{
 					"Ясно": function() {
 						$("#dlepopup").remove();

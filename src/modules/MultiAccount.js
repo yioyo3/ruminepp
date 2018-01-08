@@ -39,11 +39,14 @@ Modules.registerModule("MultiAccount", function() {
 
 			PageAPI.popup("Ошибка", "Неверный логин или пароль");
 		});
+
+		return false;
 	}
 
 	window.deleteMultiaccount = function(login) {
 		removeAccount(login);
 		window.requestAnimationFrame(() => window.multiaccount());
+		return false;
 	}
 
 	window.addMultiaccount = function() {
@@ -71,19 +74,32 @@ Modules.registerModule("MultiAccount", function() {
 	}
 
 	window.multiaccount = function() {
-		let page = "<button onclick='addMultiaccount();'>Добавить</button><hr>";
+		let page = "";
 
 		getAccounts().forEach(function(account, i) {
-			page += "<b>" + account.login + "</b> | ";
-			page += "<button onclick=\"loginMultiaccount('" + account.login + "');\">Войти</button> |";
-			page += "<button onclick=\"deleteMultiaccount('" + account.login + "');\">Удалить</button>";
-			page += "<br>";
+			page += "<div style='display: block; vertical-align: middle; border-bottom: solid #ddd 2px; padding-bottom: 5px;'>";
+			page += "<img style='vertical-align: middle;' src='' class='l-" + account.login + "' width='72px' />";
+			page += "<span style='vertical-align: middle;'>";
+			page += " <b>" + account.login + "</b>";
+			page += " [ <a href='#' onclick=\"loginMultiaccount('" + account.login + "');\">Войти</a> | ";
+			page += "<a href='#' onclick=\"deleteMultiaccount('" + account.login + "');\">Удалить</a> ]";
+			page += "</span>";
+			page += "</div><br>";
+
+			PageAPI.getUserInfo(account.login, function(info) {
+				$(".l-" + account.login).attr("src", info.avatar);
+			});
 		});
 
-		PageAPI.popup("Мультиаккаунт", page, {
+		PageAPI.popup("Мультиаккаунт", page || "<center>У вас нет аккаунтов.<br>Добавьте их, нажав кнопку <b>Добавить</b></center>", {
 			"Закрыть": function() {
 				$("#dlepopup").remove();
+			},
+			"Добавить": function() {
+				window.addMultiaccount();
 			}
+		}, {
+			"height": "320px"
 		});
 	}
 });

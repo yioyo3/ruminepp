@@ -99,9 +99,13 @@ const PageAPI = {
 			}
 		});
 	},
-	popup: function (title, body, buttons) {
+	popup: function (title, body, buttons, opts = {}) {
+		const st = Object.keys(opts).map(k => k + ": " + opts[k] + ";").join("");
+
+		body = "<div style='" + st + "overflow-y: auto; max-height: 320px; overflow-x: hidden;'>" + body;
+
 		$("#dlepopup").remove();
-		$("body").append("<div id='dlepopup' title='" + title + "' style='display:none'>" + body + "</div>");
+		$("body").append("<div id='dlepopup' title='" + title + "' style='display:none'>" + body + "</div></div>");
 		$('#dlepopup').dialog({
 			autoOpen: true,
 			width: 550,
