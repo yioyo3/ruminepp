@@ -82,6 +82,23 @@ const PageAPI = {
 			} 
 		});
 	},
+	login: function(login, password, cb) {
+		$.ajax({
+			method: "POST",
+			url: "https://ru-minecraft.ru/",
+			data: {
+				login_name: login,
+				login_password: password,
+				login: "submit"
+			},
+			success: function(body, status, xhr) {
+				cb(true);
+			},
+			error: function() {
+				cb(false);
+			}
+		});
+	},
 	popup: function (title, body, buttons) {
 		$("#dlepopup").remove();
 		$("body").append("<div id='dlepopup' title='" + title + "' style='display:none'>" + body + "</div>");
