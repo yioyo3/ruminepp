@@ -57,6 +57,31 @@ const PageAPI = {
 		$("#bullet_energy_emos").dialog("close");
 		window.ie_range_cache = null;
 	},
+	getOnline: function(content) {
+		return Array.from(
+			$("span", 
+				$(
+					$(".userClin", content ? $(content) : undefined)[0]
+				)
+			).not("[style='color:#9CA1A5']")
+		).map(e => e.innerText);
+	},
+	getUserInfo: function(username, cb) {
+		// TODO: implement other
+
+		$.ajax({ 
+			url: "https://ru-minecraft.ru/engine/ajax/profile.php?name=" + username + "&skin=ru-minecraft", 
+			success: function(content) {
+				const e = $(content);
+
+				const avatar = $("img", e)[0].src;
+
+				cb({
+					avatar: avatar
+				});
+			} 
+		});
+	},
 	popup: function (title, body, buttons) {
 		$("#dlepopup").remove();
 		$("body").append("<div id='dlepopup' title='" + title + "' style='display:none'>" + body + "</div>");
