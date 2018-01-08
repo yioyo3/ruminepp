@@ -20,11 +20,12 @@
     }
     label {
     position: relative;
-    display: block;
+    display: inline-block;
     text-align: left;
     cursor: pointer;
     font-weight: 500;
     padding: 0 0 0 30px;
+    height: 20px;
     width: 300px;
     float: left;
     }
@@ -33,7 +34,9 @@
     height: 15px;
     position: relative;
     border: 3px solid #71a9d2;
+    border-radius: 5px;
     margin: -21px 0px;
+    transition: border ease .4s;
     overflow: hidden;
     cursor: pointer;
 }
@@ -42,19 +45,25 @@
     position: absolute;
     width: 35px;
     height: 35px;
-    background: transparent;
+    background: #9bd4ff;
     margin: 15px 0 0 -30px;
     transform: rotate(45deg);
-    transition: margin ease .5s, background ease .5s;
+    transition: margin ease .5s;
 }
+    input:not(checked) + .true_checkbox {
+        border: 1.5px solid rgba(113, 169, 210, 0.3);
+    }
+    
+    input:checked + .true_checkbox {
+        border: 3px solid #71a9d2;
+    }
+    
     input:not(checked) + .true_checkbox > .fill {
-            background: transparent;
             margin: 15px 0 0 -30px;
     }
     
     input:checked + .true_checkbox > .fill {
         margin: -7px;
-        background: #9bd4ff;
     }
     
     .more {
@@ -71,7 +80,9 @@
     
     #spoiler {
         display: none;
+        opacity: 1;
         font-family: 'Consolas','Droid Sans','Monaco','Lucida',sans-serif;
+        transition: display ease .5s, opacity ease .5s;
     }
     
     #spoiler textarea {
@@ -87,21 +98,27 @@
     }
 </style>
 
-<img src="https://i.imgur.com/F9dywXu.png" class="ruminepp_logo">
-<span style="font-family: 'Segoe UI', 'Arial', sans-serif; font-size: 14px; user-select: none;"><div id="checkboxes"><br><input class="rmppSetting" type="checkbox" id="RuMinePP"><div class="true_checkbox"><span class="fill"></span></div><label for="RuMinePP">Включить RuMine++ (не убирать)</label>
+<img src="https://i.imgur.com/F9dywXu.png" class="ruminepp_logo"><br>
+<hr style="border: 0.5px solid #91cdcf; width: 100%">
+<span style="display: block; font-family: 'Segoe UI', 'Arial', sans-serif; font-size: 14px; user-select: none; background: url(https://i.imgur.com/ddIqSYY.png) repeat fixed center center"><div id="checkboxes"><br><input class="rmppSetting" type="checkbox" id="RuMinePP"><div class="true_checkbox"><span class="fill"></span></div><label for="RuMinePP">Включить RuMine++ (не убирать)</label>
 <br><br>
 <input class="rmppSetting" type="checkbox" id="ReleaseChecker"><div class="true_checkbox"><span class="fill"></span></div><label for="ReleaseChecker">Проверять наличие новых релизов</label>
 <br><br>
 <input class="rmppSetting" type="checkbox" id="ForumMessagesUpdater"><div class="true_checkbox"><span class="fill"></span></div><label for="ForumMessagesUpdater">Автообновление сообщений на форуме</label>
 <br><br>
-<input class="rmppSetting" type="checkbox" id="CustomEmoticons"><div class="true_checkbox"><span class="fill"></span></div><label for="CustomEmoticons" class="CustomEmoticons">Кастомные эмотиконы</label><a href="javascript:ShowOrHide('spoiler')" class="more">&#9660;</a><div id="spoiler"><br>
-<textarea id="CustomEmoticons_urls" style="height: 30px; width: 450px; resize: none" placeholder="Ссылки на картинки для эмотиконов (с новой строки)"></textarea></div></div><br></span>
+<input class="rmppSetting" type="checkbox" id="ForumMessageHistory"><div class="true_checkbox"><span class="fill"></span></div><label for="ForumMessageHistory" style="width: 330px; font-size: 13px">Сохранять историю редактирования сообщений</label>
+<br><br>
+<input class="rmppSetting" type="checkbox" id="CustomEmoticons"><div class="true_checkbox"><span class="fill"></span></div><label for="CustomEmoticons" class="CustomEmoticons">Кастомные эмотиконы</label><a href="javascript:ShowOrHide('spoiler')" class="more">&#9660;</a>
+<div id="spoiler"><br><textarea id="CustomEmoticons_urls" style="height: 30px; width: 450px; resize: none" placeholder="Ссылки на картинки для эмотиконов (с новой строки)"></textarea></div>
+</div><br></span>
 <script type="text/javascript">
 $('#CustomEmoticons').click(function() {
     if( $(this).is(':checked')) {
         $(".more").css({"opacity": "1", "visibility": "visible"});
+        $("#spoiler").css({"opacity": "1", "display": "none"});
     } else {
         $(".more").css({"opacity": "0", "visibility": "hidden"});
+        $("#spoiler").css({"opacity": "1", "display": "none"});
     }
 }); 
 </script>
