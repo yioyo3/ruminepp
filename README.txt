@@ -11,3 +11,4 @@ First install dependencies
 
 On windows run build.bat
 For building zip run zip.bat
+On Linux/Mac OS run build.sh or zip.sh
